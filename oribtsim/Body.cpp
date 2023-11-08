@@ -15,14 +15,18 @@ int constrain(float distance, int lower, int upper)
 
 
 
-Body::Body(float mass, float radius, sf::Color col, float pos_x, float pos_y, float vel_x, float vel_y) {
+Body::Body(float mass, float radius, sf::Color col, float pos_x, float pos_y, float vel_x, float vel_y, bool drawline) {
 	this->mass = mass;
 	this->radius = radius;
 	pos = vec(pos_x, pos_y);
 	vel = vec(vel_x, vel_y);
+	this->drawline = drawline;
+	this->color = col;
+ 
+	line = sf::VertexArray(sf::LineStrip, 0);
 
 	s.setPosition(pos.get_x(), pos.get_y());
-	s.setFillColor(col);
+	s.setFillColor(color);
 	s.setRadius(radius);
 }
 
@@ -84,6 +88,18 @@ void Body::check_bounds()
 	}
 }
 
+void Body::update_line()
+{
+	sf::Vertex new_vertex = sf::Vertex(sf::Vector2f(pos.get_x(), pos.get_y()));
+	new_vertex.color = color;
+	line.append(new_vertex);
+}
+
+void Body::draw_line(sf::RenderWindow& wind)
+{
+	wind.draw(line);
+}
+
 void Body::set_color(sf::Color col)
 {
 	s.setFillColor(col);
@@ -91,8 +107,13 @@ void Body::set_color(sf::Color col)
 
 void Body::render(sf::RenderWindow& wind)
 {
-	s.setPosition(pos.get_x(), pos.get_y());
+	s.setPosition(pos.get_x() - radius, pos.get_y() - radius);
 	wind.draw(s);
+}
+
+void Body::clear(sf::RenderWindow& wind)
+{
+	wind.clear();
 }
 
 vec Body::get_pos()
@@ -108,4 +129,14 @@ float Body::get_mass()
 vec Body::get_vel()
 {
 	return vel;
+}
+
+bool Body::get_drawline()
+{
+	return drawline;
+}
+
+sf::Color Body::get_color()
+{
+	return color;
 }
