@@ -4,6 +4,9 @@
 #include <iostream>
 #include "vec.h"
 #include "Constants.hpp"
+#include "parser.h"
+#include "json/json.h"
+#include <fstream>
 
 using namespace std;
 
@@ -17,16 +20,54 @@ sf::Color generate_random_color()
     return sf::Color(r, g, b);
 }
 
-int main()
+bool is_file_exist(const char* file_name)
+{
+    std::ifstream infile(file_name);
+    return infile.good();
+}
+
+int main(int argc, char** argv)
 {
     sf::RenderWindow window(sf::VideoMode(Constants::screen_width, Constants::screen_height), "Orbit Simulation");
     window.setFramerateLimit(60);
 
 
     std::vector<Body> bodies;
-    bodies.push_back(Body(100000, 20, generate_random_color(), 800, 600, 0, 0, false));
-    bodies.push_back(Body(100, 10, generate_random_color(), 800, 200, 1, 1, true));
-    bodies.push_back(Body(100, 10, generate_random_color(), 100, 200, 1, 0, true));
+
+    const char* file_name = argv[1];
+
+    if (!is_file_exist(file_name))
+    {
+        std::cout << "FILE NOT FOUND - EXITING";
+        return -1;
+    }
+
+    parser input_parser = parser(file_name);
+    Json::Value parsed_json_bodies = input_parser.parse();
+    
+    if (parsed_json_bodies)
+    {
+        for (int i = 0; i < parsed_json_bodies["bodies"].size(); i++)
+        {
+            bodies.push_back(
+                Body(
+                    parsed_json_bodies["bodies"][i]["mass"].asInt(),
+                    parsed_json_bodies["bodies"][i]["radius"].asInt(),
+                    generate_random_color(),
+                    parsed_json_bodies["bodies"][i]["pos_x"].asInt(),
+                    parsed_json_bodies["bodies"][i]["pos_y"].asInt(),
+                    parsed_json_bodies["bodies"][i]["vel_x"].asInt(),
+                    parsed_json_bodies["bodies"][i]["vel_y"].asInt(),
+                    parsed_json_bodies["bodies"][i]["drawline"].asInt()));
+        }
+    }
+    else
+    {
+        std::cout << "FAILED TO READ JSON FILE" << std::endl;
+        return -1;
+    }
+
+
 
     // bodies.push_back(Body(0.1, 5, sf::Color::Blue, 1100, 600, -0, -0));
 
@@ -55,10 +96,10 @@ int main()
             }
 
             bodies[i].update_physics(bodies_except_self);
-            bodies[i].update_line();
             bodies[i].check_bounds();
             if (bodies[i].get_drawline())
             {
+                bodies[i].update_line();
                 bodies[i].draw_line(window);
             }
             bodies[i].render(window);

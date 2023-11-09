@@ -1,0 +1,23 @@
+{
+  "bodies": [
+    {
+      "mass": 1000,
+      "radius": 10,
+      "pos_x": 10,
+      "pos_y": 10,
+      "vel_x": 1,
+      "vel_y": 2,
+      "drawline": true
+    },
+    {
+      "mass": 10000,
+      "radius": 30,
+      "pos_x": 660,
+      "pos_y": 240,
+      "vel_x": 1,
+      "vel_y": 2,
+      "drawline": true
+    }
+  ]
+}
+

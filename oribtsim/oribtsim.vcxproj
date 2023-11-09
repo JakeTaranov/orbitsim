@@ -104,12 +104,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\jake_\source\repos\oribtsim\sfml\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jake_\source\repos\oribtsim\jsoncpp\include;C:\Users\jake_\source\repos\oribtsim\sfml\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\jake_\source\repos\oribtsim\sfml\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\jake_\source\repos\oribtsim\sfml\lib;C:\Users\jake_\source\repos\oribtsim\jsoncpp\src\lib_json;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-system-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-network-d.lib;sfml-window-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -133,16 +133,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\jsoncpp\dist\jsoncpp.cpp" />
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="oribtsim.cpp" />
+    <ClCompile Include="parser.cpp" />
     <ClCompile Include="vec.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Body.h" />
     <ClInclude Include="constants.hpp" />
+    <ClInclude Include="parser.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="vec.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="oribtsim.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
