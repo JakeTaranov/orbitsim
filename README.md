@@ -32,7 +32,14 @@ The program reads in a json file with the attributes of N bodies in the form of:
 Above is an example taken from ```stable_orbit.json``` 
 
 <ul>
-  <li><b>mass<\b>: (int) mass of body n</l1>
+  <li>**mass**: mass of body n (int)</li>
+  <li>**radius**: radius of body n (int) </li>
+  <li>**pos_x**: inital x position of body n (int) </li>
+  <li>**pos_y**: inital y position of body n (int)</li>
+  <li>**vel_x**: inital x velocity of body n (int) </li>
+  <li>**vel_y**: inital y velocity of body n (int) </li>
+  <li>**drawline**: determines if the program will draw a trailing line of the body n's previous movement (bool)</li>
+  <l1>**stay_in_bounds**: determines wether all the bodies will stay in the screen bounds by boncing off the edges (bool)</l1>
 </ul>
 
 
