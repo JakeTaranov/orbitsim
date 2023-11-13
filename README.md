@@ -39,7 +39,7 @@ Above is an example taken from ```stable_orbit.json```
   <li>**vel_x**: inital x velocity of body n (int) </li>
   <li>**vel_y**: inital y velocity of body n (int) </li>
   <li>**drawline**: determines if the program will draw a trailing line of the body n's previous movement (bool)</li>
-  <l1>**stay_in_bounds**: determines wether all the bodies will stay in the screen bounds by boncing off the edges (bool)</l1>
+  <l1>**stay_in_bounds**: determines wether all the bodies will stay in the screen bounds by boncing off the edges (bool)</li>
 </ul>
 
 
