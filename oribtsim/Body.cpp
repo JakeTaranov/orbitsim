@@ -3,10 +3,7 @@
 #include <math.h>
 #include "constants.hpp"
 
-using namespace std;
-
-
-int constrain(float distance, int lower, int upper)
+int constrain(float distance, float lower, float upper)
 {
 	if (distance < lower) distance = lower;
 	else if (distance > upper) distance = upper;
@@ -14,12 +11,11 @@ int constrain(float distance, int lower, int upper)
 }
 
 
-
 Body::Body(float mass, float radius, sf::Color col, float pos_x, float pos_y, float vel_x, float vel_y, bool drawline) {
 	this->mass = mass;
 	this->radius = radius;
-	pos = vec(pos_x, pos_y);
-	vel = vec(vel_x, vel_y);
+	pos = Vec(pos_x, pos_y);
+	vel = Vec(vel_x, vel_y);
 	this->drawline = drawline;
 	this->color = col;
  
@@ -32,8 +28,7 @@ Body::Body(float mass, float radius, sf::Color col, float pos_x, float pos_y, fl
 
 
 
-// Updating physics relative to all other bodies
-// Gravitational Force = (G * mass_1 * mass_2) / distance_between_center^2
+// updating physics for all bodies with respect to the current body 
 void Body::update_physics(std::vector<Body> other_bodies)
 {
 	// Updating physics of body relative to all other bodies;
@@ -41,11 +36,11 @@ void Body::update_physics(std::vector<Body> other_bodies)
 
 		Body other_body = other_bodies[i];
 
-		vec other_pos = other_body.get_pos();
-		vec force_dir = pos.subtract(other_pos);
+		Vec other_pos = other_body.get_pos();
+		Vec force_dir = pos.subtract(other_pos);
 		float distance = force_dir.get_magnitude();
 
-		distance = constrain(distance, Constants::constrain_lower, Constants::constrain_upper);
+		distance = constrain(distance, (float)Constants::constrain_lower, (float)Constants::constrain_upper);
 
 		float gForce= (Constants::G * other_body.mass) / pow(distance, 2);
 		
@@ -116,7 +111,7 @@ void Body::clear(sf::RenderWindow& wind)
 	wind.clear();
 }
 
-vec Body::get_pos()
+Vec Body::get_pos()
 {
 	return pos;
 }
@@ -126,7 +121,7 @@ float Body::get_mass()
 	return mass;
 }
 
-vec Body::get_vel()
+Vec Body::get_vel()
 {
 	return vel;
 }

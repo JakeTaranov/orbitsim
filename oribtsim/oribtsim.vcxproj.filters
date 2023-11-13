@@ -32,7 +32,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Body.h">
+    <ClInclude Include="body.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vec.h">

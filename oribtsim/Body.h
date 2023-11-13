@@ -6,43 +6,40 @@
 
 class Body
 {
-
-    float mass;
-    float radius;
-    vec pos;
-    vec vel;
-    bool drawline;
-    sf::Color color;
-    sf::VertexArray line;
-    sf::CircleShape s;
-    sf::Color col;
+	float mass;
+	float radius;
+	Vec pos;
+	Vec vel;
+	bool drawline;
+	sf::Color color;
+	sf::VertexArray line;
+	sf::CircleShape s;
+	sf::Color col;
 
 public:
-    Body(float mass, float radius, sf::Color col, float pos_x, float pos_y, float vel_x, float vel_y, bool drawline);
+	Body(float mass, float radius, sf::Color col, float pos_x, float pos_y, float vel_x, float vel_y, bool drawline);
 
-    void render(sf::RenderWindow&);
+	void render(sf::RenderWindow&);
 
-    void clear(sf::RenderWindow&);
+	void clear(sf::RenderWindow&);
 
-    void update_physics(std::vector<Body>);
+	void update_physics(std::vector<Body>);
 
-    void check_bounds();
+	void check_bounds();
 
-    void update_line();
+	void update_line();
 
-    void draw_line(sf::RenderWindow& wind);
+	void draw_line(sf::RenderWindow& wind);
 
-    void set_color(sf::Color);
+	void set_color(sf::Color);
 
-    vec get_pos();
+	Vec get_pos();
 
-    float get_mass();
+	float get_mass();
 
-    vec get_vel();
+	Vec get_vel();
 
-    bool get_drawline();
+	bool get_drawline();
 
-    sf::Color get_color();
-
-
+	sf::Color get_color();
 };
