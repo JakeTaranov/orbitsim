@@ -1,4 +1,4 @@
-In an attempt to learn C++ I created a program to simulate orbits of celestial bodies.
+In an attempt to learn C++ I created a program using SFML to simulate orbits of celestial bodies.
 
 ## Input
 
