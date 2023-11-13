@@ -43,11 +43,14 @@ Above is an example taken from ```stable_orbit.json```
 </ul>
 
 ## Examples
-https://github.com/JakeTaranov/oribtsim/assets/48743548/c234fd49-8c1c-4492-ad4f-a78886aa6275
+
+
+https://github.com/JakeTaranov/oribtsim/assets/48743548/d2bebb0d-5fa8-48c4-8a27-990027b54648
 
 
 
-https://github.com/JakeTaranov/oribtsim/assets/48743548/db372364-ecda-41f2-9018-2b14eed51053
+https://github.com/JakeTaranov/oribtsim/assets/48743548/2843d010-d044-4db5-bc4a-9183b39a1251
+
 
 
 
