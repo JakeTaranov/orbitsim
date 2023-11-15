@@ -34,10 +34,10 @@ Above is an example taken from ```stable_orbit.json```
 <ul>
   <li> <strong> mass </strong>: mass of body n (int) </li>
   <li> <strong> radius </strong>: radius of body n (int) </li>
-  <li> <strong> pos_x </strong>: inital x position of body n (int) </li>
-  <li> <strong> pos_y </strong>: inital y position of body n (int)</li>
-  <li> <strong> vel_x </strong>: inital x velocity of body n (int) </li>
-  <li> <strong> vel_y </strong>: inital y velocity of body n (int) </li>
+  <li> <strong> pos_x </strong>: initial x position of body n (int) </li>
+  <li> <strong> pos_y </strong>: initial y position of body n (int)</li>
+  <li> <strong> vel_x </strong>: initial x velocity of body n (int) </li>
+  <li> <strong> vel_y </strong>: initial y velocity of body n (int) </li>
   <li> <strong> drawline </strong>: determines if the program will draw a trailing line of the body n's previous movement (bool) </li>
   <li> <strong> stay_in_bounds </strong>: determines wether all the bodies will stay in the screen bounds by boncing off the edges (bool)</li>
 </ul>
