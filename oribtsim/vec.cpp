@@ -42,7 +42,7 @@ void Vec::normalize()
 	y = y / get_magnitude();
 }
 
-float Vec::getAngle()
+float Vec::get_angle()
 {
 	return atan2(y, x);
 }
