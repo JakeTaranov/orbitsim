@@ -14,7 +14,7 @@ public:
 	void normalize();
 	void add_to_x(float);
 	void add_to_y(float);
-	float getAngle();
+	float get_angle();
 	float get_magnitude();
 	float get_x();
 	float get_y();
